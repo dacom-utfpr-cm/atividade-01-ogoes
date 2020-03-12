@@ -19,7 +19,7 @@ int main() {
 
   std::thread threads[thread_number];
 
-  for (int i = 0; i < thread_number; ++i)
+  for (long int i = 0; i < thread_number; ++i)
     threads[i] = std::thread([i]() {
       int time_to_wait = rand() % 100;
 
