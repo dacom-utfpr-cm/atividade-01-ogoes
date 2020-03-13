@@ -20,8 +20,8 @@
   * @param  filename[]: name of file with quotes
   * @retval None
   */
-std::ifstream& get_file(const char filename[]) {
-  static std::ifstream file;
+std::vector<std::string> get_file_data(const char filename[]) {
+  std::ifstream file;
   file.open(filename);
 
   if (!file) {
@@ -29,20 +29,29 @@ std::ifstream& get_file(const char filename[]) {
     exit(1);
   }
 
-  return file;
-}
 
-void read_quotes(std::ifstream& file) {
+  std::vector<std::string> lines;
 
   std::string quote;
-  while(std::getline(file, quote)) {
+  while (std::getline(file, quote)) {
+    lines.push_back(quote);
+  }
+
+  file.close();
+
+  return lines;
+}
+
+void show_quotes(std::vector<std::string> lines) {
+  
+  
+
+  for (auto line: lines) {
     std::this_thread::sleep_for(std::chrono::seconds(10));
-    std::cout << quote << std::endl;
+    std::cout << line << std::endl;
   }
 
   std::cout << "A thread finalizou a leitura do arquivo." << std::endl;
-
-  file.close();
 }
 
 int main (int argc, const char *argv[]) {
@@ -52,10 +61,9 @@ int main (int argc, const char *argv[]) {
     exit(1);
   }
 
+  std::vector<std::string> file_data = get_file_data(argv[1]);
 
-  std::ifstream& file = get_file(argv[1]);
-
-  std::thread thread(read_quotes, file);
+  std::thread thread(show_quotes, file_data);
 
   thread.join();
   return 0;
