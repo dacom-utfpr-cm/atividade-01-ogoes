@@ -33,7 +33,7 @@ $ javac ex1/Ex1.java base/WaitingThread.java && java ex1.Ex1
 $ javac ex2/Ex2.java base/{NoArgumentException,FileReader}.java && java ex2.Ex2 base/quotes.txt
 ```
 
-#### ex4
+#### ex3
 ```sh
 $ javac ex3/Ex3.java base/*.java && java ex3.Ex3 base/quotes.txt
 ```
