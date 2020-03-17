@@ -50,13 +50,15 @@ public class WaitingThread implements Runnable {
       int timeWaiting = (this.seconds * 1000) + this.millis;
       // non-negative time
 
-      // System.out.println("Thread[" + this.threadId + "] - " + timeWaiting + "ms");
+      System.out.println("Thread[" + this.threadId + "] - " + timeWaiting + "ms");
       Thread.sleep(timeWaiting);
-
+      System.out.println("Thread[" + this.threadId + "] Finalizada");
 
     } catch (InterruptedException exception) {
       System.out.println("Thread[" + this.threadId + "] Iterrompida");
     }
+
+
   }
 
 }
