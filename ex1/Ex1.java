@@ -8,8 +8,9 @@ package ex1;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
+
+import base.WaitingThread;
 public class Ex1 {
 
   public static void main(final String[] args) {
@@ -17,25 +18,8 @@ public class Ex1 {
     int threadNumber = 3;
 
     for (int i = 0; i < threadNumber; ++i) {
-      Runnable threadRunnable = () -> {
-        try {
 
-          int limitTime = 100;
-
-          int timeWaiting = (new Random()).nextInt() % limitTime;
-          // non-negative time
-          timeWaiting = timeWaiting < 0 ? timeWaiting * (-1) : timeWaiting;
-
-          Thread.sleep(timeWaiting);
-
-          System.out.println("Thread[" + Thread.currentThread().getId() + "] - " + timeWaiting + "ms");
-
-        } catch (InterruptedException exception) {
-          System.out.println(exception);
-        }
-      };
-
-      Thread thread = new Thread(threadRunnable);
+      Thread thread = new Thread(new WaitingThread());
 
       threads.add(thread);
       thread.start();
@@ -46,7 +30,7 @@ public class Ex1 {
         // MainThread waits the created thread
         thread.join();
       } catch (InterruptedException exception) {
-        System.out.println(exception);
+        System.out.println("Não foi possível fazer o join para a Thread: " + thread);
       }
     }
   }

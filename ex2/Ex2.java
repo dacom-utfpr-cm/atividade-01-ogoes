@@ -6,6 +6,9 @@
 
 package ex2;
 
+import base.NoArgumentException;
+import base.FileReader;
+
 public class Ex2 {
   public static void main(final String[] args) throws NoArgumentException {
 

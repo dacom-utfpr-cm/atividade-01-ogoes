@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import base.FileReader;
+import base.NoArgumentException;
+import base.WaitingThread;
+
 public class Ex3 {
   public static void main(final String[] args) throws NoArgumentException {
 

@@ -3,7 +3,7 @@
  *@date 15/03/2020
  *@brief Custom Exception, threw by main if has no argument with the file path
  * */
-package ex2;
+package base;
 
 import java.lang.RuntimeException;
 
